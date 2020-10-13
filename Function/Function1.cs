@@ -21,7 +21,7 @@ namespace TwitterToCosmos
 
             try
             {
-                client = new TwitterClient("", "", "");
+                client = new TwitterClient(System.Environment.GetEnvironmentVariable("consumerKey"), System.Environment.GetEnvironmentVariable("consumerSecret"), System.Environment.GetEnvironmentVariable("accessKey"));
             }
             catch (Exception ex)
             {
@@ -29,7 +29,7 @@ namespace TwitterToCosmos
                 throw;
             }
             
-            string userName = "Alice_Weidel";
+            string userName = System.Environment.GetEnvironmentVariable("TwitterUser");
 
             var tweets = await GetUserTimelineTweets(userName, log).ConfigureAwait(false);
 
